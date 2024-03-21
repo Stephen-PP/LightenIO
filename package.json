@@ -1,0 +1,17 @@
+{
+  "name": "ligthenio",
+  "version": "0.0.0",
+  "license": "MIT",
+  "scripts": {
+    "backend:dev": "nx run backend:dev"
+  },
+  "private": true,
+  "dependencies": {},
+  "devDependencies": {
+    "@nx/js": "18.1.2",
+    "nx": "18.1.2"
+  },
+  "workspaces": [
+    "packages/*"
+  ]
+}
