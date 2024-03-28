@@ -3,7 +3,9 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "backend:dev": "nx run backend:dev"
+    "backend:dev": "nx run backend:dev",
+    "frontend:dev": "nx run frontend:dev",
+    "dev": "nx run-many -t dev --output-style=stream"
   },
   "private": true,
   "dependencies": {},
