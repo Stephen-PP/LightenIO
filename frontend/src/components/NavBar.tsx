@@ -12,7 +12,7 @@ export default function NavBar() {
                 </div>
                 <div className="flex mr-4 items-right justify-between">
                     <div className="flex py-3">
-                        <p className="text-info clickable">GitHub</p>
+                        <a href="https://github.com/Stephen-PP/LightenIO" target="_blank" className="text-info clickable">Github</a>
                     </div>
                     <div className="flex px-3">
                         <div className="flex-initial self-center">
