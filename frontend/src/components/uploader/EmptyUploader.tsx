@@ -11,7 +11,7 @@ export default function EmptyUploader() {
                         <Image className="mx-auto" src="upload.svg" width={40} height={40} alt="Upload" />
                     </div>
                     <div className="mt-4">
-                        <span className="text-xl text-neutral">Drag & Drop or <span className="text-logo text-primary">Browse Files</span> to Compress</span>
+                        <span className="text-xl text-neutral clickable">Drag & Drop or <span className="text-logo text-primary">Browse Files</span> to Compress</span>
                     </div>
                     <div className="mt-4">
                         <span className="text-info">Supported File Formats: PDF, PNG, JPG</span>
