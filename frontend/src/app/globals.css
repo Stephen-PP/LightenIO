@@ -2,11 +2,109 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-    background-color: #ffffff;
+@font-face {
+    font-family: 'SFProDisplay';
+    src: url('/fonts/SFProDisplay-Regular.woff2') format('woff2'),
+        url('/fonts/SFProDisplay-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
 }
 
-.font-inter {
-    font-family: "Inter", sans-serif;
+:root {
+    --color-body-light: #F2F2F7;
+    --color-body-dark: #1C1C1E;
+
+    --color-logo-text-light: #0A84FF;
+    --color-logo-text-dark: #0A84FF;
+
+    --color-info-btn-light: #EBEBEB;
+    --color-info-btn-dark: #1A1A1A;
+
+    --color-primary-light: #0040D3;
+    --color-primary-dark: #0040D3;
+
+    --color-info-text-light: #6C6C70;
+    --color-info-text-dark: #6C6C70;
+
+    --color-neutral-text-light: #222222;
+    --color-neutral-text-dark: #F2F2F7;
+
+    --theme-switcher-dark: #393939;
+    --theme-switcher-light: #D1D1D6;
+
+    --theme-toggle-dark: #393939;
+    --theme-toggle-light: #D1D1D6;
+}
+
+body.light {
+    --color-body: var(--color-body-light);
+    --color-logo-text: var(--color-logo-text-light);
+    --color-info-btn: var(--color-info-btn-light);
+    --color-info-text: var(--color-info-text-light);
+    --color-neutral-text: var(--color-neutral-text-light);
+
+    --theme-switcher-transform: translateX(0px);
+    --theme-switcher-color: var(--theme-switcher-light);
+    --theme-toggle-color: var(--theme-toggle-light);
+}
+
+body.dark {
+    --color-body: var(--color-body-dark);
+    --color-logo-text: var(--color-logo-text-dark);
+    --color-info-btn: var(--color-info-btn-dark);
+    --color-info-text: var(--color-info-text-dark);
+    --color-neutral-text: var(--color-neutral-text-dark);
+
+    --theme-switcher-transform: translateX(30px);
+    --theme-switcher-color: var(--theme-switcher-dark);
+    --theme-toggle-color: var(--theme-toggle-dark);
+}
+
+body {
+    background-color: var(--color-body);
+}
+
+.font-sf-pro-display {
+    font-family: 'SFProDisplay';
     font-optical-sizing: auto;
+}
+
+.text-logo {
+    color: var(--color-logo-text);
+}
+
+.btn-info {
+    background-color: var(--color-info-btn);
+}
+
+.text-info {
+    color: var(--color-info-text);
+}
+
+.text-neutral {
+    color: var(--color-neutral-text);
+}
+
+.clickable {
+    cursor: default;
+}
+
+.theme-toggle-switch {
+    transform: var(--theme-switcher-transform);
+    transition: transform 0.3s;
+    width: 30px;
+    height: 100%;
+    background-color: var(--theme-switcher-color);
+}
+
+.theme-toggle {
+    border-radius: 74px;
+    border-color: var(--theme-toggle-color);
+    width: 60px;
+    height: 30px;
+}
+
+.no-display {
+    display: none;
 }

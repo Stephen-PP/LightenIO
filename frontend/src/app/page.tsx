@@ -1,7 +1,7 @@
 "use client";
 
 import NavBar from "@/components/NavBar";
-import HeroSection from "@/components/hero/Hero";
+import EmptyUploader from "@/components/uploader/EmptyUploader";
 
 function UploadFileSectionEmpty(){
 
@@ -9,6 +9,6 @@ function UploadFileSectionEmpty(){
 
 export default function Home() {
     return (
-        <><NavBar /><HeroSection /></>
+        <><NavBar /><EmptyUploader /></>
     );
 }
