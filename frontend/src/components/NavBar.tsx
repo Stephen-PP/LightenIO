@@ -8,7 +8,7 @@ export default function NavBar() {
         <div className="flex justify-center">
             <div className="mt-5 flex justify-between w-full max-w-screen-2xl">
                 <div className="ml-4 flex-initial self-center">
-                    <span className=" font-medium text-2xl text-logo">Lighten</span>
+                    <span className=" font-medium text-2xl text-logo clickable">Lighten</span>
                 </div>
                 <div className="flex mr-4 items-right justify-between">
                     <div className="flex py-3">
