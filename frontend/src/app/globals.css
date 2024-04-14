@@ -35,6 +35,9 @@
 
     --theme-toggle-dark: #393939;
     --theme-toggle-light: #D1D1D6;
+
+    --uploader-color-light: #D1D1D6;
+    --uploader-color-dark: #393939;
 }
 
 body.light {
@@ -47,6 +50,7 @@ body.light {
     --theme-switcher-transform: translateX(0px);
     --theme-switcher-color: var(--theme-switcher-light);
     --theme-toggle-color: var(--theme-toggle-light);
+    --uploader-color: var(--uploader-color-light);
 }
 
 body.dark {
@@ -59,6 +63,7 @@ body.dark {
     --theme-switcher-transform: translateX(30px);
     --theme-switcher-color: var(--theme-switcher-dark);
     --theme-toggle-color: var(--theme-toggle-dark);
+    --uploader-color: var(--uploader-color-dark);
 }
 
 body {
@@ -107,6 +112,10 @@ body {
     border-color: var(--theme-toggle-color);
     width: 60px;
     height: 30px;
+}
+
+.uploader-border-color {
+    border-color: var(--uploader-color);
 }
 
 .no-display {

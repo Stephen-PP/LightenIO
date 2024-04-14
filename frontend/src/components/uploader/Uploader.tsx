@@ -43,22 +43,22 @@ const globalButtons: UploaderButtonProps[] = [ {
 export default function Uploader() {
     return (
         <div className="flex justify-center">
-            <div className="flex flex-col justify-start mt-20 w-full max-w-screen-2xl h-[50vh] max-h-screen text-center border rounded-md" style={{borderColor: "#D1D1D6"}}>
-                <div className="flex justify-between border-b w-full" style={{borderColor: "#D1D1D6"}}>
+            <div className="flex flex-col justify-start mt-20 w-full max-w-screen-2xl h-[50vh] max-h-screen text-center border rounded-md uploader-border-color">
+                <div className="flex justify-between border-b w-full uploader-border-color">
                     <div className="flex flex-initial self-center" >
                         {selectedManipulationButtons.map((button, index) => (
                             <div className="flex px-3 py-3">
-                            <div className="clickable btn-info rounded-md flex-initial self-center" style={{...(button.style ?? {})}}>
-                                <p className="flex m-3 text-info" style={{...(button.textStyle ?? {})}}>
-                                    <button.icon 
-                                        size={18}
-                                        className="mx-auto flex-initial self-center mr-2"
-                                        style={{...(button.iconStyle ?? {})}}
-                                    />
-                                    {button.text}
-                                </p>
+                                <div className="clickable btn-info rounded-md flex-initial self-center" style={{...(button.style ?? {})}}>
+                                    <p className="flex m-3 text-info" style={{...(button.textStyle ?? {})}}>
+                                        <button.icon 
+                                            size={18}
+                                            className="mx-auto flex-initial self-center mr-2"
+                                            style={{...(button.iconStyle ?? {})}}
+                                        />
+                                        {button.text}
+                                    </p>
+                                </div>
                             </div>
-                        </div>
                         ))}
                     </div>
                     <div className="flex items-right justify-between">
