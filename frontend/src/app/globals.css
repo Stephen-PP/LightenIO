@@ -78,6 +78,10 @@ body {
     background-color: var(--color-info-btn);
 }
 
+.icon-dark {
+    fill: #6C6C70;
+}
+
 .text-info {
     color: var(--color-info-text);
 }
