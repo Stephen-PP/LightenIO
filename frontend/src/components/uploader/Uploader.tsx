@@ -1,8 +1,9 @@
 "use client";
 
-import { RemixiconComponentType, RiAddFill, RiAddLine, RiDeleteBinLine, RiDownload2Line, RiFullscreenExitLine, RiSettings4Fill } from '@remixicon/react';
+import { RemixiconComponentType, RiAddFill, RiAddLine, RiCrossFill, RiDeleteBinLine, RiDownload2Line, RiFullscreenExitLine, RiSettings4Fill } from '@remixicon/react';
 import Image from 'next/image';
 import { CSSProperties } from 'react';
+import { IsDarkMode } from '../switch/ThemeSwitcher';
 
 type UploaderButtonProps = {
     text: string,
@@ -39,6 +40,14 @@ const globalButtons: UploaderButtonProps[] = [ {
         fill: "white"
     }
 }]
+
+function ProgressBar({ width, background, color}: { width: string, color: string, background: string}) {
+    return (
+        <div className="w-20 rounded-full h-2.5" style={{background}}>
+            <div className="h-2.5 rounded-full" style={{ width, background: color }}></div>
+        </div>
+    )
+}
 
 export default function Uploader() {
     return (
@@ -79,21 +88,35 @@ export default function Uploader() {
                     </div>
                 </div>
                 <div className="self-center items-center w-full">
-                    <table className="table-auto">
-                        <thead>
+                    <table className="border-collapse table-auto pt-2 w-full h-20 max-h-20 uploader-table overflow-scroll">
+                        <thead className="font-normal border-b uploader-border-color pb-20 text-info">
                             <tr>
-                                <th>File Name</th>
-                                <th>Size</th>
-                                <th>Actions</th>
+                                <th style={{width: "2%"}}><input type="checkbox"></input></th>
+                                <th style={{width: "20%"}}>File Name</th>
+                                <th style={{width: "10%"}}>Size</th>
+                                <th style={{width: "20%"}}>Current Status</th>
+                                <th style={{width: "10%"}}>Size Reduction</th>
+                                <th style={{width: "10%"}}>Compression Ratio</th>
+                                <th style={{width: "15%", textAlign: "center"}}>Actions</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td>file.pdf</td>
+                        <tbody className="text-dark">
+                            <tr className="border-b uploader-border-color">
+                                <td><input type="checkbox"></input></td>
+                                <td >file.pdf</td>
                                 <td>1.2MB</td>
                                 <td>
-                                    <button className="btn-info">Compress</button>
-                                    <button className="btn-danger">Delete</button>
+                                    <div className="flex items-center self-center">
+                                        Uploading...60% &nbsp;&nbsp;&nbsp;<ProgressBar background="#D9D9D9" color="#0A84FF" width="10%"/>
+                                    </div>
+                                </td>
+                                <td>1.1MB</td>
+                                <td>10%</td>
+                                <td>
+                                    <div className="flex items-center self-center justify-center">
+                                        <RiCrossFill className="border border-black"/>
+                                        <RiCrossFill className="border border-black"/>
+                                    </div>
                                 </td>
                             </tr>
                         </tbody>

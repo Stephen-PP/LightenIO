@@ -1,6 +1,22 @@
 import { useEffect, useState } from "react";
 import { RiSunFill, RiMoonFill } from '@remixicon/react'
 
+export function IsDarkMode() {
+    if (typeof window !== 'undefined') {
+        return window.localStorage.getItem("switch-theme") === "true";
+    } else {
+        return false;
+    }
+}
+
+export function IsLightMode() {
+    if (typeof window !== 'undefined') {
+        return window.localStorage.getItem("switch-theme") === "false";
+    } else {
+        return false;
+    }
+}
+
 export default function ThemeSwitcher(options: {id: string}) {
     const [switched, setSwitched] = useState<boolean>(() => {
         if (typeof window !== 'undefined') {
