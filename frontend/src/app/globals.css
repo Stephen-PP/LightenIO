@@ -99,6 +99,14 @@ body {
     cursor: default;
 }
 
+body.dark .clickable:hover {
+    filter: brightness(135%);
+}
+
+body.light .clickable:hover {
+    filter: brightness(90%);
+}
+
 .theme-toggle-switch {
     transform: var(--theme-switcher-transform);
     transition: transform 0.3s;

@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "backend:dev": "nx run backend:dev",
+    "backend:remote:dev": "nx run remote-backend:dev",
+    "browser:remote:dev": "nx run remote-browser:dev",
     "frontend:dev": "nx run frontend:dev",
     "dev": "nx run-many -t dev --output-style=stream"
   },
