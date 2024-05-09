@@ -15,7 +15,9 @@ importers:
         specifier: 18.1.2
         version: 18.1.2
 
-  backend: {}
+  backend/browser: {}
+
+  backend/remote: {}
 
   frontend:
     dependencies:

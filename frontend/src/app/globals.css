@@ -149,4 +149,37 @@ body.light .clickable:hover {
 
 .uploader-table th {
     text-align: left;
+    
+}
+
+.uploader-table thead{
+    background-color: var(--color-body);
+}
+
+.uploader-table-checkbox {
+    padding-left: 12px;
+}
+  
+.uploader-table tr { /* Apply to all table rows */
+    height: 3rem; /* Set a fixed height for each row */
+}
+
+/* Target WebKit-based browsers (Chrome, Safari, etc.) */
+.overflow-y-scroll::-webkit-scrollbar {
+    width: 4px; /* Adjust width as needed */
+}
+
+/* Target the scrollbar thumb (the draggable part) */
+.overflow-y-scroll::-webkit-scrollbar-thumb {
+    background-color: #0A84FF; 
+    border-radius: 10px; /* Optional: Rounded scrollbar */
+}
+
+/* Apply the three classes to Firefox browsers */
+@-moz-document url-prefix(){
+    .overflow-y-scroll {
+        scrollbar-width: auto; /* "auto" or "thin" */
+        scrollbar-color: #0A84FF transparent; /* Scrollbar color */
+    }
+
 }

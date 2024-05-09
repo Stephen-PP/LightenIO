@@ -2,8 +2,11 @@
 
 import { RiSettings4Fill } from '@remixicon/react'
 import ThemeSwitcher from "./switch/ThemeSwitcher";
+import { useState } from 'react';
+import SettingsModal from './settings/SettingsModal';
 
 export default function NavBar() {
+    const [showModal, setShowModal] = useState(false);
     return (
         <div className="flex justify-center">
             <div className="mt-5 flex justify-between w-full max-w-screen-2xl">
@@ -20,7 +23,7 @@ export default function NavBar() {
                         </div>
                     </div>
                     <div className="flex px-3">
-                        <div className="clickable btn-info rounded-md flex-initial self-center">
+                        <div className="clickable btn-info rounded-md flex-initial self-center" onClick={() => setShowModal(true)}>
                             <p className="flex m-3 text-info">
                                 <RiSettings4Fill 
                                     size={18}
@@ -31,6 +34,8 @@ export default function NavBar() {
                     </div>
                 </div>
             </div>
+
+            <SettingsModal isOpen={showModal} onClose={() => setShowModal(false)}/>
         </div>
     )
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import { RemixiconComponentType, RiAddFill, RiAddLine, RiCrossFill, RiDeleteBinLine, RiDownload2Line, RiFullscreenExitLine, RiSettings4Fill } from '@remixicon/react';
+import { RemixiconComponentType, RiAddFill, RiAddLine, RiCloseLine, RiCrossFill, RiDeleteBinLine, RiDownload2Line, RiFullscreenExitLine, RiSettings4Fill } from '@remixicon/react';
 import Image from 'next/image';
 import { CSSProperties } from 'react';
 import { IsDarkMode } from '../switch/ThemeSwitcher';
@@ -56,7 +56,7 @@ export default function Uploader() {
                 <div className="flex justify-between border-b w-full uploader-border-color">
                     <div className="flex flex-initial self-center" >
                         {selectedManipulationButtons.map((button, index) => (
-                            <div className="flex px-3 py-3">
+                            <div className="flex px-3 py-3" key={index}>
                                 <div className="clickable btn-info rounded-md flex-initial self-center" style={{...(button.style ?? {})}}>
                                     <p className="flex m-3 text-info" style={{...(button.textStyle ?? {})}}>
                                         <button.icon 
@@ -72,7 +72,7 @@ export default function Uploader() {
                     </div>
                     <div className="flex items-right justify-between">
                         {globalButtons.map((button, index) => (
-                            <div className="flex px-3 py-3">
+                            <div className="flex px-3 py-3" key={index}>
                                 <div className="clickable btn-info rounded-md flex-initial self-center" style={{...(button.style ?? {})}}>
                                     <p className="flex m-3 text-info" style={{...(button.textStyle ?? {})}}>
                                         <button.icon 
@@ -87,11 +87,11 @@ export default function Uploader() {
                         ))}
                     </div>
                 </div>
-                <div className="self-center items-center w-full">
-                    <table className="border-collapse table-auto pt-2 w-full h-20 max-h-20 uploader-table overflow-scroll">
-                        <thead className="font-normal border-b uploader-border-color pb-20 text-info">
+                <div className="self-center items-center w-full overflow-y-scroll">
+                    <table className="border-collapse table-auto pt-2 w-full h-20 max-h-20 uploader-table">
+                        <thead className="font-normal border-b uploader-border-color pb-20 text-info sticky top-0 z-0 backdrop-blur-xl backdrop-brightness-20">
                             <tr>
-                                <th style={{width: "2%"}}><input type="checkbox"></input></th>
+                                <th className="uploader-table-checkbox" style={{width: "2%"}}><input type="checkbox"></input></th>
                                 <th style={{width: "20%"}}>File Name</th>
                                 <th style={{width: "10%"}}>Size</th>
                                 <th style={{width: "20%"}}>Current Status</th>
@@ -102,7 +102,7 @@ export default function Uploader() {
                         </thead>
                         <tbody className="text-dark">
                             <tr className="border-b uploader-border-color">
-                                <td><input type="checkbox"></input></td>
+                                <td className="uploader-table-checkbox"><input type="checkbox"></input></td>
                                 <td >file.pdf</td>
                                 <td>1.2MB</td>
                                 <td>
@@ -113,9 +113,11 @@ export default function Uploader() {
                                 <td>1.1MB</td>
                                 <td>10%</td>
                                 <td>
-                                    <div className="flex items-center self-center justify-center">
-                                        <RiCrossFill className="border border-black"/>
-                                        <RiCrossFill className="border border-black"/>
+                                    <div className="flex items-center self-center justify-center space-x-4">
+                                        <RiFullscreenExitLine size={18}/>
+                                        <RiDeleteBinLine size={18}/>
+                                        <RiCloseLine size={18}/>
+                                        <RiDownload2Line size={18}/>
                                     </div>
                                 </td>
                             </tr>
