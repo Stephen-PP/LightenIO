@@ -6,6 +6,9 @@ import Uploader from "@/components/uploader/Uploader";
 
 export default function Home() {
     return (
-        <><NavBar /><Uploader /></>
+        <>
+            <NavBar />
+            <Uploader />
+        </>
     );
 }
