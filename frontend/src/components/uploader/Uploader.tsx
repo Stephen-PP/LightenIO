@@ -51,7 +51,7 @@ function ProgressBar({ width, background, color}: { width: string, color: string
 
 export default function Uploader() {
     return (
-        <div className="flex justify-center">
+        <div className="flex justify-center px-4">
             <div className="flex flex-col justify-start mt-20 w-full max-w-screen-2xl h-[50vh] max-h-screen text-center border rounded-md uploader-border-color">
                 <div className="flex justify-between border-b w-full uploader-border-color">
                     <div className="flex flex-initial self-center" >

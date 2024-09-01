@@ -13,8 +13,5 @@
   "devDependencies": {
     "@nx/js": "18.1.2",
     "nx": "18.1.2"
-  },
-  "workspaces": [
-    "packages/*"
-  ]
+  }
 }
