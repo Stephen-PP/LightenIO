@@ -8,7 +8,7 @@ export default function Home() {
     return (
         <>
             <NavBar />
-            <Uploader />
+            <Uploader/>
         </>
     );
 }

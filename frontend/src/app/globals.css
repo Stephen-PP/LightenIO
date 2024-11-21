@@ -39,8 +39,11 @@
     --theme-toggle-dark: #393939;
     --theme-toggle-light: #D1D1D6;
 
-    --uploader-color-light: #D1D1D6;
+    --uploader-color-light: #d1d1d6;
     --uploader-color-dark: #393939;
+
+    --empty-uploader-color-light: #393939;
+    --empty-uploader-color-dark: #d1d1d1;
 }
 
 body.light {
@@ -55,6 +58,7 @@ body.light {
     --theme-switcher-color: var(--theme-switcher-light);
     --theme-toggle-color: var(--theme-toggle-light);
     --uploader-color: var(--uploader-color-light);
+    --empty-uploader-color: var(--empty-uploader-color-light);
 }
 
 body.dark {
@@ -69,6 +73,7 @@ body.dark {
     --theme-switcher-color: var(--theme-switcher-dark);
     --theme-toggle-color: var(--theme-toggle-dark);
     --uploader-color: var(--uploader-color-dark);
+    --empty-uploader-color: var(--empty-uploader-color-dark);
 }
 
 body {
@@ -133,6 +138,10 @@ body.light .clickable:hover {
 
 .uploader-border-color {
     border-color: var(--uploader-color);
+}
+
+.empty-uploader-border-color {
+    border-color: var(--empty-uploader-color);
 }
 
 .no-display {

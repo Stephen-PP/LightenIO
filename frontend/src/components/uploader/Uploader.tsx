@@ -1,13 +1,15 @@
 "use client";
 
-import { RemixiconComponentType, RiAddFill, RiAddLine, RiCloseLine, RiCrossFill, RiDeleteBinLine, RiDownload2Line, RiFullscreenExitLine, RiSettings4Fill } from '@remixicon/react';
-import Image from 'next/image';
-import { CSSProperties } from 'react';
-import { IsDarkMode } from '../switch/ThemeSwitcher';
+import { RemixiconComponentType, RiAddLine, RiFullscreenExitLine, RiDeleteBinLine, RiDownload2Line } from '@remixicon/react';
+import React, { CSSProperties, useEffect, useState } from 'react';
+import UploaderRow from './UploaderRow';
+import { CompressionJob, useJobState } from '@/state/jobState';
+import { CreateFileCompressionTask } from '@/actions/fileActions';
 
 type UploaderButtonProps = {
     text: string,
     icon: RemixiconComponentType,
+    id?: string,
     style?: CSSProperties,
     textStyle?: CSSProperties,
     iconStyle?: CSSProperties
@@ -15,7 +17,8 @@ type UploaderButtonProps = {
 
 const selectedManipulationButtons: UploaderButtonProps[] = [{
     text: "Add File",
-    icon: RiAddLine
+    icon: RiAddLine,
+    id: "add-file-btn"
 }, {
     text: "Compress",
     icon: RiFullscreenExitLine
@@ -41,23 +44,69 @@ const globalButtons: UploaderButtonProps[] = [ {
     }
 }]
 
-function ProgressBar({ width, background, color}: { width: string, color: string, background: string}) {
-    return (
-        <div className="w-20 rounded-full h-2.5" style={{background}}>
-            <div className="h-2.5 rounded-full" style={{ width, background: color }}></div>
-        </div>
-    )
-}
-
 export default function Uploader() {
+    const {jobs, addJobs} = useJobState();
+    const [isDragging, setIsDragging] = useState(false);
+
+    // Create a hook so that if isDragging is active, add a blue border around the "Add File component"
+    useEffect(() => {
+        const addFileButton = document.getElementById('add-file-btn');
+        if (addFileButton) {
+            if (isDragging) {
+                addFileButton.style.border = '2px solid #0040D3';
+            } else {
+                addFileButton.style.border = 'none';
+            }
+        }
+    }, [isDragging]);
+    
+    // Function to handle if files are dropped
+    const handleDrop = (e: React.DragEvent) => {
+        e.preventDefault();
+        setIsDragging(false);
+        const files = Array.from(e.dataTransfer.files);
+        const validFiles = files.filter(file => {
+            const type = file.type.toLowerCase();
+            return type.includes('pdf') || 
+                   type.includes('png') || 
+                   type.includes('jpg') || 
+                   type.includes('jpeg');
+        });
+        
+        const convertedFiles: CompressionJob[] = [];
+
+        for(let file of validFiles) {
+            convertedFiles.push(CreateFileCompressionTask(file));
+        }
+
+        addJobs(...convertedFiles);
+    };
+
+    // Function to handle if files are dragged over
+    const handleDragOver = (e: React.DragEvent) => {
+        e.preventDefault();
+        setIsDragging(true);
+    };
+
+    // Function to handle when a dragged file leaves the drag area
+    const handleDragLeave = (e: React.DragEvent) => {
+        e.preventDefault();
+        setIsDragging(false);
+    }
+
     return (
         <div className="flex justify-center px-4">
-            <div className="flex flex-col justify-start mt-20 w-full max-w-screen-2xl h-[50vh] max-h-screen text-center border rounded-md uploader-border-color">
+            <div 
+                className={`flex flex-col justify-start mt-20 w-full max-w-screen-2xl h-[50vh] max-h-screen text-center border rounded-md uploader-border-color`}
+                onDrop={handleDrop}
+                onDragOver={handleDragOver}
+                onDragLeave={handleDragLeave}
+            >
                 <div className="flex justify-between border-b w-full uploader-border-color">
                     <div className="flex flex-initial self-center" >
                         {selectedManipulationButtons.map((button, index) => (
                             <div className="flex px-3 py-3" key={index}>
-                                <div className="clickable btn-info rounded-md flex-initial self-center" style={{...(button.style ?? {})}}>
+                                <div id={button.id} className="clickable btn-info rounded-md flex-initial self-center" style={{...(button.style ?? {})}}>
                                     <p className="flex m-3 text-info" style={{...(button.textStyle ?? {})}}>
                                         <button.icon 
                                             size={18}
@@ -101,26 +150,7 @@ export default function Uploader() {
                             </tr>
                         </thead>
                         <tbody className="text-dark">
-                            <tr className="border-b uploader-border-color">
-                                <td className="uploader-table-checkbox"><input type="checkbox"></input></td>
-                                <td >file.pdf</td>
-                                <td>1.2MB</td>
-                                <td>
-                                    <div className="flex items-center self-center">
-                                        Uploading...60% &nbsp;&nbsp;&nbsp;<ProgressBar background="#D9D9D9" color="#0A84FF" width="10%"/>
-                                    </div>
-                                </td>
-                                <td>1.1MB</td>
-                                <td>10%</td>
-                                <td>
-                                    <div className="flex items-center self-center justify-center space-x-4">
-                                        <RiFullscreenExitLine size={18}/>
-                                        <RiDeleteBinLine size={18}/>
-                                        <RiCloseLine size={18}/>
-                                        <RiDownload2Line size={18}/>
-                                    </div>
-                                </td>
-                            </tr>
+                            <UploaderRow job={jobs[0]} />
                         </tbody>
                     </table>
                 </div>

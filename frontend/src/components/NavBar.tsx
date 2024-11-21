@@ -22,7 +22,7 @@ export default function NavBar() {
                             <ThemeSwitcher id="theme"/>
                         </div>
                     </div>
-                    <div className="flex px-3">
+                    {/* <div className="flex px-3">
                         <div className="clickable btn-info rounded-md flex-initial self-center" onClick={() => setShowModal(true)}>
                             <p className="flex m-3 text-info">
                                 <RiSettings4Fill 
@@ -31,7 +31,7 @@ export default function NavBar() {
                                 />
                                 Settings</p>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             </div>
 
